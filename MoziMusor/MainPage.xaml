@@ -9,5 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <ScrollViewer HorizontalScrollMode="Enabled">
+        <TextBlock x:Name="Hibadoboz" Width="800">
+            
+        </TextBlock>
+        </ScrollViewer>
     </Grid>
 </Page>

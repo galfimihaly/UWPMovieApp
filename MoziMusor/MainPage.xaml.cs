@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MoziMusor.Models;
+using MoziMusor.Business;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +27,16 @@ namespace MoziMusor
         public MainPage()
         {
             this.InitializeComponent();
+            Test();
+                       
+        }
+
+        public async void Test()
+        {
+            RssManager rss = new RssManager();
+            List<RssMovieViewModel> list = await rss.getMoviesFromRss();
+
+            Hibadoboz.Text = rss.eredmeny;
         }
     }
 }
