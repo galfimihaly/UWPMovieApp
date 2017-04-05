@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MoziMusor.Models;
 using MoziMusor.Business;
+using System.Text.RegularExpressions;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -34,13 +35,25 @@ namespace MoziMusor
         public async void Test()
         {
             RssManager rss = new RssManager();
-            List<RssMovieViewModel> list = await rss.getMoviesFromRss();
+            List<RssMovieModel> list = await rss.getMoviesFromRss();
+            JsonManager jsonManager = new JsonManager();
+            iApiManager apiManager = new MovieDbApiManager();
 
             string eredmeny = "";
+            string uri;
 
-            foreach(RssMovieViewModel model in list)
+            JsonMovieModel jsonModel;
+
+            foreach (RssMovieModel model in list)
             {
-                eredmeny += model.title + ", " + model.link +"\r\n";
+                string preparedTitle = model.title.Replace(" ", "+");
+                preparedTitle = preparedTitle.Replace("3D", "");
+
+                uri = apiManager.GetMovieByTitle(preparedTitle);
+
+
+                jsonModel = await jsonManager.RetrieveJson(uri);
+                eredmeny += model.title + ", "  + jsonModel.originalTitle + "\r\n" ;
             }
 
 

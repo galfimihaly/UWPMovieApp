@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoziMusor.Models
 {
-    public class RssMovieViewModel
+    public class RssMovieModel
     {
         public string title;
         public string link;

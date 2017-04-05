@@ -96,12 +96,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Business\iApiManager.cs" />
+    <Compile Include="Business\JsonManager.cs" />
     <Compile Include="Business\MovieDbApiManager.cs" />
     <Compile Include="Business\RssManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\RssMovieViewModel.cs" />
+    <Compile Include="Models\JsonMovieModel.cs" />
+    <Compile Include="Models\RssMovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

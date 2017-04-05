@@ -15,10 +15,10 @@ namespace MoziMusor.Business
 
         public Uri RssUri = new Uri("http://www.malommozi.hu/rss.php");
 
-        public async Task<List<RssMovieViewModel>> getMoviesFromRss()
+        public async Task<List<RssMovieModel>> getMoviesFromRss()
         {
             List<DateTime> dates = new List<DateTime>();
-            List<RssMovieViewModel> list = new List<RssMovieViewModel>();
+            List<RssMovieModel> list = new List<RssMovieModel>();
 
             
 
@@ -30,11 +30,11 @@ namespace MoziMusor.Business
             string title = feed.Title.Text;
 
 
-            RssMovieViewModel model;
+            RssMovieModel model;
 
             foreach(SyndicationItem item in feed.Items)
             {
-                model = new RssMovieViewModel();
+                model = new RssMovieModel();
 
                //eredmeny += item.Title.Text;
 

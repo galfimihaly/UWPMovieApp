@@ -9,7 +9,7 @@ namespace MoziMusor.Business
     public class MovieDbApiManager : iApiManager
     {
         //az api alapja, személyes api kulccsal együtt
-        private const string API_BASE = "https://https://api.themoviedb.org/3/search/movie/?api_key=5a3774eb7ca0790aafd8a6fe14e56228";
+        private const string API_BASE = "http://api.themoviedb.org/3/search/movie/?api_key=5a3774eb7ca0790aafd8a6fe14e56228";
 
         private const string query = "&query=";
 
