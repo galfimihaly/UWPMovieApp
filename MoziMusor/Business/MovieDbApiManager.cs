@@ -22,9 +22,9 @@ namespace MoziMusor.Business
         }
 
         //nyelvváltásra későbbiekben
-        public string languageChangeTo(string newlang)
+        public void languageChangeTo(string newlang)
         {
-            return this.language = "&language=" + newlang;
+            this.language = "&language=" + newlang;
         }
 
     }

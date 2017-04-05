@@ -46,12 +46,8 @@ namespace MoziMusor
 
             foreach (RssMovieModel model in list)
             {
-                string preparedTitle = model.title.Replace(" ", "+");
-                preparedTitle = preparedTitle.Replace("3D", "");
-
+                string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
                 uri = apiManager.GetMovieByTitle(preparedTitle);
-
-
                 jsonModel = await jsonManager.RetrieveJson(uri);
                 eredmeny += model.title + ", "  + jsonModel.originalTitle + "\r\n" ;
             }
