@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MoziMusor.Models;
+using Windows.Web.Syndication;
+using System.Xml.Linq;
 
 namespace MoziMusor.Business
 {
@@ -16,27 +18,34 @@ namespace MoziMusor.Business
         public async Task<List<RssMovieViewModel>> getMoviesFromRss()
         {
             List<DateTime> dates = new List<DateTime>();
+            List<RssMovieViewModel> list = new List<RssMovieViewModel>();
 
-            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+            
 
-            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
-            string httpResponseBody = "";
+            //lekérdezzük az rss feedet
+            
+            SyndicationClient client = new SyndicationClient();
+            SyndicationFeed feed = await client.RetrieveFeedAsync(RssUri);
 
-            try
+            string title = feed.Title.Text;
+
+
+            RssMovieViewModel model;
+
+            foreach(SyndicationItem item in feed.Items)
             {
-                //Send the GET request
-                httpResponse = await httpClient.GetAsync(RssUri);
-                httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                model = new RssMovieViewModel();
+
+               //eredmeny += item.Title.Text;
+
+                model.title = item.Title.Text;
+                model.link = item.Links.Single().Uri.ToString();
+
+                list.Add(model);                             
             }
 
-            eredmeny = httpResponseBody;
-
-            return new List<RssMovieViewModel>();
+            
+            return list;
         }
     }
 }

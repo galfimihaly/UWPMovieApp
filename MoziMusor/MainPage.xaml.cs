@@ -36,7 +36,15 @@ namespace MoziMusor
             RssManager rss = new RssManager();
             List<RssMovieViewModel> list = await rss.getMoviesFromRss();
 
-            Hibadoboz.Text = rss.eredmeny;
+            string eredmeny = "";
+
+            foreach(RssMovieViewModel model in list)
+            {
+                eredmeny += model.title + ", " + model.link +"\r\n";
+            }
+
+
+            Hibadoboz.Text = eredmeny;
         }
     }
 }
