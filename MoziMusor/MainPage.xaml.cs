@@ -42,14 +42,14 @@ namespace MoziMusor
             string eredmeny = "";
             string uri;
 
-            JsonMovieModel jsonModel;
+            BasicJsonMovieModel basicJsonModel;
 
             foreach (RssMovieModel model in list)
             {
                 string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
                 uri = apiManager.GetMovieByTitle(preparedTitle);
-                jsonModel = await jsonManager.RetrieveJson(uri);
-                eredmeny += model.title + ", "  + jsonModel.originalTitle + "\r\n" ;
+                basicJsonModel = await jsonManager.RetrieveJson(uri);
+                eredmeny += model.title + ", "  + basicJsonModel.originalTitle + "\r\n" ;
             }
 
 

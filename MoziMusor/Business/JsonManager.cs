@@ -13,9 +13,9 @@ namespace MoziMusor.Business
     {
         private HttpClient client = new HttpClient();
 
-        public async Task<JsonMovieModel> RetrieveJson(string uri)
+        public async Task<BasicJsonMovieModel> RetrieveJson(string uri)
         {
-            JsonMovieModel model = new JsonMovieModel();
+            BasicJsonMovieModel model = new BasicJsonMovieModel();
 
             //json kérése
             HttpResponseMessage response = await client.GetAsync(new Uri(uri));

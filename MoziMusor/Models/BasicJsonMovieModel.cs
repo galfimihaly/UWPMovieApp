@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace MoziMusor.Models
 {
-    public class JsonMovieModel
+    public class BasicJsonMovieModel
     {
+        public string id;
         public string title;
         public string originalTitle;
         public string poster;
-        public string releaseDate;
-        public string overView;
         public bool adult;
-        public int voteCount;
         public float voteAverage;
 
      }
