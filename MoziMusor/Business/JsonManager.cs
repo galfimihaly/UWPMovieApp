@@ -30,6 +30,7 @@ namespace MoziMusor.Business
                 JsonArray jsonArray = jsonObj.GetNamedArray("results");
                 JsonObject movieData = jsonArray.GetObjectAt(0);
                 string originalTitle = movieData.GetNamedString("original_title");
+                string overView = movieData.GetNamedString("overview");
                 if (originalTitle != "")
                 { 
                      model.originalTitle = originalTitle;
