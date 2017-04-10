@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MoziMusor.Models;
+using MoziMusor.Business;
+using System.Text.RegularExpressions;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +28,32 @@ namespace MoziMusor
         public MainPage()
         {
             this.InitializeComponent();
+            Test();
+                       
+        }
+
+        public async void Test()
+        {
+            RssManager rss = new RssManager();
+            List<RssMovieModel> list = await rss.getMoviesFromRss();
+            JsonManager jsonManager = new JsonManager();
+            iApiManager apiManager = new MovieDbApiManager();
+
+            string eredmeny = "";
+            string uri;
+
+            JsonMovieModel jsonModel;
+
+            foreach (RssMovieModel model in list)
+            {
+                string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
+                uri = apiManager.GetMovieByTitle(preparedTitle);
+                jsonModel = await jsonManager.RetrieveJson(uri);
+                eredmeny += model.title + ", "  + jsonModel.originalTitle + "\r\n" ;
+            }
+
+
+            Hibadoboz.Text = eredmeny;
         }
     }
 }
