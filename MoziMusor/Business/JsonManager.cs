@@ -32,14 +32,13 @@ namespace MoziMusor.Business
                 string originalTitle = movieData.GetNamedString("original_title");
                 string overView = movieData.GetNamedString("overview");
                 if (originalTitle != "")
-                { 
-                     model.originalTitle = originalTitle;
+                {
+                    model.originalTitle = originalTitle;
                 }
                 else
                 {
                     model.originalTitle = "Nincs angol címe!";
                 }
-                model.overView = movieData.GetNamedString("overview");
 
             }
             else

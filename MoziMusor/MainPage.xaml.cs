@@ -53,7 +53,8 @@ namespace MoziMusor
             }
 
 
-            Hibadoboz.Text = eredmeny;
+
+            Hibadoboz.Text = rss.eredmeny;
         }
     }
 }
