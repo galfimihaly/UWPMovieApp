@@ -102,8 +102,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\BasicJsonMovieModel.cs" />
-    <Compile Include="Models\DetailsJsonMovieModel.cs" />
+    <Compile Include="Models\JsonMovieModel.cs" />
     <Compile Include="Models\RssMovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

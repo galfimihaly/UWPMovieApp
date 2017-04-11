@@ -42,7 +42,7 @@ namespace MoziMusor
             string eredmeny = "";
             string uri;
 
-            BasicJsonMovieModel basicJsonModel;
+            JsonMovieModel basicJsonModel;
 
             foreach (RssMovieModel model in list)
             {
@@ -54,7 +54,7 @@ namespace MoziMusor
 
 
 
-            Hibadoboz.Text = rss.eredmeny;
+            Hibadoboz.Text = eredmeny;
         }
     }
 }

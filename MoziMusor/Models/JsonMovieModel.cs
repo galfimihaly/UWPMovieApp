@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace MoziMusor.Models
 {
-    public class DetailsJsonMovieModel
+    public class JsonMovieModel
     {
-        public BasicJsonMovieModel baseModel;
+        public string id;
+        public string title;
+        public string originalTitle;
+        public string poster;
+        public bool adult;
+        public float voteAverage;
         public string youtubeKey;
         public string overview;
         public List<string> genres;
         public Double runtime;
 
-        public DetailsJsonMovieModel(BasicJsonMovieModel model)
-        {
-            this.baseModel = model;
-        }
 
     }
 }
