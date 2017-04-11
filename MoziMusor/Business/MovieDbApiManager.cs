@@ -28,7 +28,7 @@ namespace MoziMusor.Business
         //ha az első lekérdezés sikeres volt, és megvan a filmünk id-je, azzal visszatérünk
         public string GetDetailsById(string key)
         {
-            return string.Format("{0}{1}{2}{3}{4}{5}",DETAILS_API_BASE, key, API_KEY, APPEND_VIDEOS, language);
+            return string.Format("{0}{1}{2}{3}{4}",DETAILS_API_BASE, key, API_KEY, APPEND_VIDEOS, language);
         }
 
         //nyelvváltásra későbbiekben

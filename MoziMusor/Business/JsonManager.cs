@@ -13,7 +13,7 @@ namespace MoziMusor.Business
     {
         private HttpClient client = new HttpClient();
 
-        public async Task<JsonMovieModel> RetrieveJson(string uri)
+        public async Task<JsonMovieModel> RetrieveBasicJson(string uri)
         {
             JsonMovieModel model = new JsonMovieModel();
 
@@ -31,6 +31,12 @@ namespace MoziMusor.Business
                 JsonObject movieData = jsonArray.GetObjectAt(0);
                 string originalTitle = movieData.GetNamedString("original_title");
                 string overView = movieData.GetNamedString("overview");
+                model.id = (int)movieData.GetNamedNumber("id");
+                model.voteAverage = (float)movieData.GetNamedNumber("vote_average");
+                model.overview = overView;
+                model.poster = movieData.GetNamedString("poster_path");
+                
+
                 if (originalTitle != "")
                 {
                     model.originalTitle = originalTitle;
@@ -49,7 +55,35 @@ namespace MoziMusor.Business
             }
 
             return model;
+        }
 
+
+        public async Task<JsonMovieModel> RetrieveDetailsJson(string uri)
+        {
+            
+            HttpResponseMessage response = await client.GetAsync(new Uri(uri));
+            string result = await response.Content.ReadAsStringAsync();
+
+            JsonObject jsonObj = JsonObject.Parse(result);
+
+            JsonMovieModel model = new JsonMovieModel();
+
+            try
+            {
+                model.runtime = jsonObj.GetNamedNumber("runtime");
+
+               // JsonObject videoJsonObj = jsonObj.GetNamedArray("videos").GetObject().GetNamedArray("results").GetObjectAt(0);
+
+                //model.youtubeKey = videoJsonObj.GetNamedString("key");
+
+
+            }
+            catch
+            {
+                model.runtime = 0;
+            }
+
+            return model;
         }
 
     }

@@ -8,14 +8,18 @@ namespace MoziMusor.Models
 {
     public class JsonMovieModel
     {
-        public string id;
+
+        //az első alap lekérdezésből
+        public int id;
         public string title;
         public string originalTitle;
         public string poster;
         public bool adult;
         public float voteAverage;
-        public string youtubeKey;
         public string overview;
+
+        //a második részletes lekérdezésből
+        public string youtubeKey;
         public List<string> genres;
         public Double runtime;
 

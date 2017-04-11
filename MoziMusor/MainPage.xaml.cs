@@ -36,22 +36,40 @@ namespace MoziMusor
         {
             RssManager rss = new RssManager();
             List<RssMovieModel> list = await rss.getMoviesFromRss();
+            List<JsonMovieModel> jsonModels = new List<JsonMovieModel>();
+            JsonMovieModel details = new JsonMovieModel();
             JsonManager jsonManager = new JsonManager();
             iApiManager apiManager = new MovieDbApiManager();
 
             string eredmeny = "";
             string uri;
+            string detailsUri;
 
-            JsonMovieModel basicJsonModel;
+            JsonMovieModel jsonModel = new JsonMovieModel();
 
             foreach (RssMovieModel model in list)
             {
                 string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
+
                 uri = apiManager.GetMovieByTitle(preparedTitle);
-                basicJsonModel = await jsonManager.RetrieveJson(uri);
-                eredmeny += model.title + ", "  + basicJsonModel.originalTitle + "\r\n" ;
+
+                jsonModel = await jsonManager.RetrieveBasicJson(uri);
+
+                detailsUri = apiManager.GetDetailsById(jsonModel.id.ToString());
+
+                details = await jsonManager.RetrieveDetailsJson(detailsUri);
+
+                jsonModel.runtime = details.runtime;
+
+                eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.runtime + "\r\n";
+                jsonModels.Add(jsonModel);
+
             }
 
+            
+            //eredmeny += jsonModel.youtubeKey + "\r\n";
+            
+           
 
 
             Hibadoboz.Text = eredmeny;
