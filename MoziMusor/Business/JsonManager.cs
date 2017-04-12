@@ -9,6 +9,7 @@ namespace MoziMusor.Business
     public class JsonManager
     {
         MovieDbApiManager dbApi = new MovieDbApiManager();
+        YouTubeApiManager ytApi = new YouTubeApiManager();
         private HttpClient client = new HttpClient();
 
         public async Task<JsonMovieModel> RetrieveBasic(string uri)
@@ -33,7 +34,7 @@ namespace MoziMusor.Business
                 model.id = (int)movieData.GetNamedNumber("id");
                 model.voteAverage = (float)movieData.GetNamedNumber("vote_average");
                 model.overview = overView;
-                model.poster = movieData.GetNamedString("poster_path");
+                model.poster = dbApi.GetMoviePoster(movieData.GetNamedString("poster_path"));
                 
 
                 if (originalTitle != "")
@@ -72,7 +73,9 @@ namespace MoziMusor.Business
 
                 model.youtubeKey = jsonObj.GetNamedObject("videos").GetNamedArray("results").GetObjectAt(0).GetNamedString("key");
 
-                            }
+                model.youtubeKey = ytApi.GetYoutubeEmbedUrl(model.youtubeKey);
+
+            }
             catch
             {
                 model.runtime = 0;
