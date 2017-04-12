@@ -8,6 +8,7 @@ namespace MoziMusor.Business
 {
     public class JsonManager
     {
+        MovieDbApiManager dbApi = new MovieDbApiManager();
         private HttpClient client = new HttpClient();
 
         public async Task<JsonMovieModel> RetrieveBasic(string uri)
@@ -58,10 +59,7 @@ namespace MoziMusor.Business
 
         public async Task<JsonMovieModel> RetrieveDetails(JsonMovieModel model)
         {
-
-            MovieDbApiManager dbApi = new MovieDbApiManager();
-
-            
+           
             HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetDetailsById(model.id.ToString())));
             string result = await response.Content.ReadAsStringAsync();
 
@@ -79,6 +77,15 @@ namespace MoziMusor.Business
             {
                 model.runtime = 0;
             }
+
+            return model;
+        }
+
+        public async Task<JsonMovieModel> RetrieveImage(JsonMovieModel model)
+        {
+            //lekérjük a képet
+            HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetMoviePoster(model.youtubeKey)));
+            
 
             return model;
         }
