@@ -47,10 +47,28 @@ namespace MoziMusor.Business
 
                 vetites = vetites.Substring(vetites.IndexOf('<'))
                     .Replace("<", "").Replace(">", "")
-                    .Replace("b", "").Replace("r", "");
+                    .Replace("b", "").Replace("r", "")
+                    .Replace("eem", "").Replace(" ", "")
+                    .Replace("/", "");
 
+                string[] datas = new string[vetites.Length/10];
+                int j = 10;
 
+                for(int i=0; i<datas.Length; i++)
+                {
 
+                    if(i == datas.Length-1)
+                    {
+                        datas[i] = vetites.Substring(j - 10);
+                    }
+                    else
+                    {
+                        datas[i] = vetites.Remove(j).Substring(j - 10);
+
+                        j += 10;
+                    }
+                   
+                }
 
                 list.Add(model);                                
             }
