@@ -1,8 +1,5 @@
 ﻿using MoziMusor.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Web.Http;
@@ -13,7 +10,7 @@ namespace MoziMusor.Business
     {
         private HttpClient client = new HttpClient();
 
-        public async Task<JsonMovieModel> RetrieveBasicJson(string uri)
+        public async Task<JsonMovieModel> RetrieveBasic(string uri)
         {
             JsonMovieModel model = new JsonMovieModel();
 
@@ -58,23 +55,23 @@ namespace MoziMusor.Business
         }
 
 
-        public async Task<JsonMovieModel> RetrieveDetailsJson(string uri)
+        public async Task<JsonMovieModel> RetrieveDetails(JsonMovieModel model)
         {
+
+            MovieDbApiManager dbApi = new MovieDbApiManager();
+
             
-            HttpResponseMessage response = await client.GetAsync(new Uri(uri));
+            HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetDetailsById(model.id.ToString())));
             string result = await response.Content.ReadAsStringAsync();
 
-            JsonObject jsonObj = JsonObject.Parse(result);
+            var jsonObj = JsonObject.Parse(result);
 
-            JsonMovieModel model = new JsonMovieModel();
 
             try
             {
-                model.runtime = jsonObj.GetNamedNumber("runtime");
+                model.runtime = jsonObj.GetNamedNumber("revenue");
 
-               // JsonObject videoJsonObj = jsonObj.GetNamedArray("videos").GetObject().GetNamedArray("results").GetObjectAt(0);
-
-                //model.youtubeKey = videoJsonObj.GetNamedString("key");
+                //model.youtubeKey = jsonObj["videos"]["results"];
 
 
             }

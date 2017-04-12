@@ -53,13 +53,10 @@ namespace MoziMusor
 
                 uri = apiManager.GetMovieByTitle(preparedTitle);
 
-                jsonModel = await jsonManager.RetrieveBasicJson(uri);
+                jsonModel = await jsonManager.RetrieveBasic(uri);
 
-                detailsUri = apiManager.GetDetailsById(jsonModel.id.ToString());
+                jsonModel = await jsonManager.RetrieveDetails(jsonModel);
 
-                details = await jsonManager.RetrieveDetailsJson(detailsUri);
-
-                jsonModel.runtime = details.runtime;
 
                 eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.runtime + "\r\n";
                 jsonModels.Add(jsonModel);
