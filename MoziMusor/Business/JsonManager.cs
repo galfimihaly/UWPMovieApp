@@ -28,6 +28,7 @@ namespace MoziMusor.Business
                 JsonObject movieData = jsonArray.GetObjectAt(0);
                 string originalTitle = movieData.GetNamedString("original_title");
                 string overView = movieData.GetNamedString("overview");
+                model.title = movieData.GetNamedString("title");
                 model.id = (int)movieData.GetNamedNumber("id");
                 model.voteAverage = (float)movieData.GetNamedNumber("vote_average");
                 model.overview = overView;
@@ -69,12 +70,11 @@ namespace MoziMusor.Business
 
             try
             {
-                model.runtime = jsonObj.GetNamedNumber("revenue");
+                model.runtime = jsonObj.GetNamedNumber("runtime");
 
-                //model.youtubeKey = jsonObj["videos"]["results"];
+                model.youtubeKey = jsonObj.GetNamedObject("videos").GetNamedArray("results").GetObjectAt(0).GetNamedString("key");
 
-
-            }
+                            }
             catch
             {
                 model.runtime = 0;

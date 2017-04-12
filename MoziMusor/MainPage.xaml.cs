@@ -58,7 +58,8 @@ namespace MoziMusor
                 jsonModel = await jsonManager.RetrieveDetails(jsonModel);
 
 
-                eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.runtime + "\r\n";
+
+                eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.youtubeKey + "\r\n";
                 jsonModels.Add(jsonModel);
 
             }
