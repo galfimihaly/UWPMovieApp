@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MoziMusor.Models
 {
-    public class JsonMovieModel
+    public class MovieModel
     {
+        //rss-ből
+        public string link;
+        public List<ScreeningModel> screenings;
 
         //az első alap lekérdezésből
         public int id;
@@ -22,7 +25,6 @@ namespace MoziMusor.Models
         public string youtubeKey;
         public List<string> genres;
         public Double runtime;
-
 
     }
 }

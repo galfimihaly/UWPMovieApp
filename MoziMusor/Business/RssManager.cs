@@ -19,34 +19,40 @@ namespace MoziMusor.Business
 
         public Uri RssUri = new Uri("http://www.malommozi.hu/rss.php");
 
-        public async Task<List<RssMovieModel>> getMoviesFromRss()
+        public async Task<List<MovieModel>> getMoviesFromRss()
         {
             List<DateTime> dates = new List<DateTime>();
-            List<RssMovieModel> list = new List<RssMovieModel>();
-
-            
+            List<MovieModel> list = new List<MovieModel>();
 
             //lekérdezzük az rss feedet
             
             SyndicationClient client = new SyndicationClient();
             SyndicationFeed feed = await client.RetrieveFeedAsync(RssUri);
-
-            string title = feed.Title.Text;
-
             
-            
-            RssMovieModel model;
+                       
+            //feltöltjük a cím mezőt
+            MovieModel model;
+            ScreeningModel screeningModel;
             
             foreach (SyndicationItem item in feed.Items)
             {
-                model = new RssMovieModel();
+                model = new MovieModel();
 
                 model.title = item.Title.Text;
                 model.link = item.Links.Single().Uri.ToString();
 
-                eredmeny += item.NodeValue.Substring(400);
 
-                list.Add(model);                             
+                //itt történik a mágia :D
+                string vetites = item.NodeValue;
+
+                vetites = vetites.Substring(vetites.IndexOf('<'))
+                    .Replace("<", "").Replace(">", "")
+                    .Replace("b", "").Replace("r", "");
+
+
+
+
+                list.Add(model);                                
             }
 
             

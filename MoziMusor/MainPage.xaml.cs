@@ -35,19 +35,19 @@ namespace MoziMusor
         public async void Test()
         {
             RssManager rss = new RssManager();
-            List<RssMovieModel> list = await rss.getMoviesFromRss();
-            List<JsonMovieModel> jsonModels = new List<JsonMovieModel>();
-            JsonMovieModel details = new JsonMovieModel();
+            List<MovieModel> list = await rss.getMoviesFromRss();
+            List<MovieModel> jsonModels = new List<MovieModel>();
+            MovieModel details = new MovieModel();
             JsonManager jsonManager = new JsonManager();
             iApiManager apiManager = new MovieDbApiManager();
 
-            string eredmeny = "";
+            string testresult = "";
             string uri;
-            string detailsUri;
 
-            JsonMovieModel jsonModel = new JsonMovieModel();
+            MovieModel jsonModel = new MovieModel();
 
-            foreach (RssMovieModel model in list)
+            /*
+            foreach (MovieModel model in list)
             {
                 string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
 
@@ -59,18 +59,15 @@ namespace MoziMusor
 
 
 
-                eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.youtubeKey + "\r\n";
+                //eredmeny += model.title + ", "  + jsonModel.originalTitle +  ", " + jsonModel.youtubeKey + "\r\n";
                 jsonModels.Add(jsonModel);
 
-            }
-
-            
-            //eredmeny += jsonModel.youtubeKey + "\r\n";
+            }*/
             
            
 
 
-            Hibadoboz.Text = eredmeny;
+            //Hibadoboz.Text = rss.eredmeny;
         }
     }
 }

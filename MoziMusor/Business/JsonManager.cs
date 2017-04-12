@@ -9,12 +9,11 @@ namespace MoziMusor.Business
     public class JsonManager
     {
         MovieDbApiManager dbApi = new MovieDbApiManager();
-        YouTubeApiManager ytApi = new YouTubeApiManager();
         private HttpClient client = new HttpClient();
 
-        public async Task<JsonMovieModel> RetrieveBasic(string uri)
+        public async Task<MovieModel> RetrieveBasic(string uri)
         {
-            JsonMovieModel model = new JsonMovieModel();
+            MovieModel model = new MovieModel();
 
             //json kérése
             HttpResponseMessage response = await client.GetAsync(new Uri(uri));
@@ -58,7 +57,7 @@ namespace MoziMusor.Business
         }
 
 
-        public async Task<JsonMovieModel> RetrieveDetails(JsonMovieModel model)
+        public async Task<MovieModel> RetrieveDetails(MovieModel model)
         {
            
             HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetDetailsById(model.id.ToString())));
@@ -73,7 +72,7 @@ namespace MoziMusor.Business
 
                 model.youtubeKey = jsonObj.GetNamedObject("videos").GetNamedArray("results").GetObjectAt(0).GetNamedString("key");
 
-                model.youtubeKey = ytApi.GetYoutubeEmbedUrl(model.youtubeKey);
+                model.youtubeKey = YouTubeApiManager.GetYoutubeEmbedUrl(model.youtubeKey);
 
             }
             catch
@@ -84,7 +83,7 @@ namespace MoziMusor.Business
             return model;
         }
 
-        public async Task<JsonMovieModel> RetrieveImage(JsonMovieModel model)
+        public async Task<MovieModel> RetrieveImage(MovieModel model)
         {
             //lekérjük a képet
             HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetMoviePoster(model.youtubeKey)));

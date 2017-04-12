@@ -10,7 +10,7 @@ namespace MoziMusor.Business
     {
         private const string URI_BASE = "https://www.youtube.com/embed/";
 
-        public string GetYoutubeEmbedUrl(string key)
+        public static string GetYoutubeEmbedUrl(string key)
         {
             return string.Format("{0}{1}", URI_BASE, key);
         }

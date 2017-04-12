@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MoziMusor.Models
 {
-    public class RssMovieModel
+    public class ScreeningModel
     {
-        public string title;
-        public string link;
-        public List<DateTime> dates;
+        public DateTime time;
+        public int hall;
     }
 }
