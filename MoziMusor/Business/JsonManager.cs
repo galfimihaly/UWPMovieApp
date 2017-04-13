@@ -83,14 +83,17 @@ namespace MoziMusor.Business
             return model;
         }
 
+        /*
         public async Task<MovieModel> RetrieveImage(MovieModel model)
         {
             //lekérjük a képet
-            HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetMoviePoster(model.youtubeKey)));
-            
+            //HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetMoviePoster(model.poster)));
+
+            model.poster = dbApi.GetMoviePoster(model.poster);
+
 
             return model;
-        }
+        }*/
 
     }
 }
