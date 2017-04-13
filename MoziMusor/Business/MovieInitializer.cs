@@ -13,18 +13,19 @@ namespace MoziMusor.Business
         {
             JsonManager jsonManager  = jsonManager = new JsonManager();
             RssManager rssManager = rssManager = new RssManager();
+            List<MovieModel> listFromRss = new List<MovieModel>();
             iApiManager  apiManager = new MovieDbApiManager();
             List<MovieModel> models = new List<MovieModel>();
-
-
-
-            List<MovieModel> listFromRss = new List<MovieModel>();
-            listFromRss = await rssManager.getMoviesFromRss();
-
             MovieModel jsonModel = new MovieModel();
 
             string uri;
             string preparedTitle;
+
+
+
+            listFromRss = await rssManager.getMoviesFromRss();
+
+
 
             foreach (MovieModel model in listFromRss)
             {
@@ -34,16 +35,18 @@ namespace MoziMusor.Business
 
                 try
                 {
+
                     jsonModel = await jsonManager.RetrieveBasic(uri);
 
                     jsonModel = await jsonManager.RetrieveDetails(jsonModel);
+
+                    jsonModel.screenings = model.screenings;
+
                 }
                 catch
                 {
                     jsonModel.overview = "Nem található adat";
                 }
-
-                //jsonModel = await jsonManager.RetrieveImage(jsonModel);
 
 
                 models.Add(jsonModel);

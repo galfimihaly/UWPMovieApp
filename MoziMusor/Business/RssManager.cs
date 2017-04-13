@@ -21,7 +21,6 @@ namespace MoziMusor.Business
 
         public async Task<List<MovieModel>> getMoviesFromRss()
         {
-            List<DateTime> dates = new List<DateTime>();
             List<MovieModel> list = new List<MovieModel>();
 
             //lekérdezzük az rss feedet
@@ -32,7 +31,6 @@ namespace MoziMusor.Business
                        
             //feltöltjük a cím mezőt
             MovieModel model;
-            ScreeningModel screeningModel;
             
             foreach (SyndicationItem item in feed.Items)
             {
@@ -43,32 +41,58 @@ namespace MoziMusor.Business
 
 
                 //itt történik a mágia :D
-                string vetites = item.NodeValue;
+                string descriptionString = item.NodeValue;
 
-                vetites = vetites.Substring(vetites.IndexOf('<'))
+                descriptionString = descriptionString.Substring(descriptionString.IndexOf('<'))
                     .Replace("<", "").Replace(">", "")
                     .Replace("b", "").Replace("r", "")
                     .Replace("eem", "").Replace(" ", "")
                     .Replace("/", "");
 
-                string[] datas = new string[vetites.Length/10];
+                string[] data = new string[descriptionString.Length/10];
                 int j = 10;
 
-                for(int i=0; i<datas.Length; i++)
+                //szétszedjük a stringet 10 karakteres, pontosan elválasztott sorozatokra
+                for(int i=0; i<data.Length; i++)
                 {
 
-                    if(i == datas.Length-1)
+                    if(i == data.Length-1)
                     {
-                        datas[i] = vetites.Substring(j - 10);
+                        data[i] = descriptionString.Substring(j - 10);
                     }
                     else
                     {
-                        datas[i] = vetites.Remove(j).Substring(j - 10);
+                        data[i] = descriptionString.Remove(j).Substring(j - 10);
 
                         j += 10;
-                    }
+                    }         
+                }
 
-                   
+                //kinyerjük a konkrét adatokat, feltöltjük a screeningModels listát
+                model.screenings = new List<ScreeningModel>();
+                DateTime dateTime;
+                string day;
+                int h;
+                for (int i=0; i<data.Length-1; i++)
+                {
+                    if (data[i].Contains('-'))
+                    {
+                        day = data[i];
+                        i++;
+                        while (data[i].Contains(':') && i < data.Length-1)
+                        {
+                            //(day + ' ' + datas[i]).Remove(16);
+                            dateTime = DateTime.ParseExact((day + ' ' + data[i]).Remove(16), "yyyy-MM-dd HH:mm",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+                            h = int.Parse(data[i][6].ToString());
+
+                            model.screenings.Add(new ScreeningModel() { time = dateTime, hall = h });
+                            i++;
+                        }
+                        i--;
+
+                    }
                 }
 
                 list.Add(model);                                
