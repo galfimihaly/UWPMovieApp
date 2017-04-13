@@ -42,6 +42,9 @@ namespace MoziMusor.Business
 
                     jsonModel.screenings = model.screenings;
 
+                    jsonModel.title = model.title;
+
+
                 }
                 catch
                 {

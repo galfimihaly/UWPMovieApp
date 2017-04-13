@@ -32,12 +32,20 @@ namespace MoziMusor
             this.InitializeComponent();
             currentApp = Application.Current as App;
             Test();
-                       
+
+
+
+
+
         }
         public async void Test()
         {
             currentApp.models = await MovieInitializer.InicializeMovies();
-            
+            foreach (MovieModel model in currentApp.models)
+            {
+                Hibadoboz.Text += model.title + "\b\n";
+            }
+            return;
         }
     }
 }

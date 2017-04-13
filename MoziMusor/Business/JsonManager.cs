@@ -29,7 +29,6 @@ namespace MoziMusor.Business
                 JsonObject movieData = jsonArray.GetObjectAt(0);
                 string originalTitle = movieData.GetNamedString("original_title");
                 string overView = movieData.GetNamedString("overview");
-                model.title = movieData.GetNamedString("title");
                 model.id = (int)movieData.GetNamedNumber("id");
                 model.voteAverage = (float)movieData.GetNamedNumber("vote_average");
                 model.overview = overView;
