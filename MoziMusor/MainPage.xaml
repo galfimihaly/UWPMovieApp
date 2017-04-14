@@ -9,10 +9,130 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ScrollViewer HorizontalScrollMode="Enabled">
-        <TextBlock x:Name="Hibadoboz" Margin="30">
-            
-        </TextBlock>
-        </ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Mobile">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="320"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSliptView.(SplitView.DisplayMode)" Value="Overlay"/>
+                        <Setter Target="MainSliptView.(SplitView.IsPaneOpen)" Value="False"/>
+                        <Setter Target="SearchAutoSuggestBox.(FrameworkElement.Width)" Value="100"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Tablet">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSliptView.(SplitView.DisplayMode)" Value="CompactOverlay"/>
+                        <Setter Target="MainSliptView.(SplitView.IsPaneOpen)" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSliptView.(SplitView.DisplayMode)" Value="CompactInline"/>
+                        <Setter Target="MainSliptView.(SplitView.IsPaneOpen)" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0"
+                       HorizontalAlignment="Stretch"
+                       Background="{StaticResource TitleMenuBackgroundColor}">
+            <Button x:Name="HamburgerButton" 
+                        Width="44"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        RelativePanel.AlignTopWithPanel="True"
+                        RelativePanel.AlignBottomWithPanel="True"
+                        VerticalAlignment="Stretch"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE700;"
+                        FontSize="22"
+                        Style="{StaticResource HamburgerButtonStyle}"
+                        Click="HamburgerButton_Click" />
+
+            <TextBlock x:Name="TitleTextBlock"
+                       RelativePanel.RightOf="HamburgerButton"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="16"
+                       FontFamily="Segoe UI"
+                       Margin="16,0"
+                       Text="MalomMozi" />
+
+            <AutoSuggestBox x:Name="SearchAutoSuggestBox"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignVerticalCenterWithPanel="True" 
+                            Height="30" Width="200"
+                            Margin="0,0,8,0"
+                            PlaceholderText="Search"
+                            QueryIcon="Find"
+                            AutoMaximizeSuggestionArea="True" Style="{StaticResource TitleAutoSuggestBoxStyle}" />
+
+        </RelativePanel>
+
+        <SplitView x:Name="MainSliptView"
+                   Grid.Row="1"
+                   DisplayMode="CompactOverlay"
+                   IsPaneOpen="False"
+                   CompactPaneLength="44"
+                   OpenPaneLength="200">
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single"
+                         Background="{StaticResource PaneBackgroundColor}"
+                         SelectionChanged="ListBox_SelectionChanged" >
+                    <ListBoxItem x:Name="MoviesListBoxItem" Style="{StaticResource PaneListBoxItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Video" />
+                            <TextBlock Text="Moziműsor" Margin="16,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="PricesListBoxItem" Style="{StaticResource PaneListBoxItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Shop" />
+                            <TextBlock Text="Árak" Margin="16,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="MapListBoxItem" Style="{StaticResource PaneListBoxItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="World" />
+                            <TextBlock Text="Megközelítés" Margin="16,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="InfoListBoxItem" Style="{StaticResource PaneListBoxItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="ContactInfo" />
+                            <TextBlock Text="Információk" Margin="16,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="AboutListBoxItem" VerticalAlignment="Bottom"  Style="{StaticResource PaneListBoxItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="ReportHacked" />
+                            <TextBlock Text="Névjegy" Margin="16,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                </ListBox>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <ScrollViewer HorizontalScrollMode="Enabled">
+                    <TextBlock x:Name="Hibadoboz" Margin="30"/>
+                </ScrollViewer>
+                <!--<Frame x:Name="MainFrame" />-->
+            </SplitView.Content>
+        </SplitView>
+
     </Grid>
+
 </Page>
