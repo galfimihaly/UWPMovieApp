@@ -25,36 +25,27 @@ namespace MoziMusor
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private App currentApp;
+
         public MainPage()
         {
             this.InitializeComponent();
+            currentApp = Application.Current as App;
             Test();
-                       
-        }
 
+
+
+
+
+        }
         public async void Test()
         {
-            RssManager rss = new RssManager();
-            List<RssMovieModel> list = await rss.getMoviesFromRss();
-            JsonManager jsonManager = new JsonManager();
-            iApiManager apiManager = new MovieDbApiManager();
-
-            string eredmeny = "";
-            string uri;
-
-            BasicJsonMovieModel basicJsonModel;
-
-            foreach (RssMovieModel model in list)
+            currentApp.models = await MovieInitializer.InicializeMovies();
+            foreach (MovieModel model in currentApp.models)
             {
-                string preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
-                uri = apiManager.GetMovieByTitle(preparedTitle);
-                basicJsonModel = await jsonManager.RetrieveJson(uri);
-                eredmeny += model.title + ", "  + basicJsonModel.originalTitle + "\r\n" ;
+                Hibadoboz.Text += model.title + "\b\n";
             }
-
-
-
-            Hibadoboz.Text = rss.eredmeny;
+            return;
         }
     }
 }

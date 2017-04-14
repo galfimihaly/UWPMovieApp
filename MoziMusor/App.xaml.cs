@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MoziMusor.Business;
+using MoziMusor.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation; 
+using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,6 +24,10 @@ namespace MoziMusor
     /// </summary>
     sealed partial class App : Application
     {
+
+        public List<MovieModel> models;
+
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +36,12 @@ namespace MoziMusor
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            //inicializálások
+            this.models = new List<MovieModel>();
+
+
+
         }
 
         /// <summary>
@@ -63,6 +75,7 @@ namespace MoziMusor
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
             }
 
             if (e.PrelaunchActivated == false)
@@ -74,6 +87,11 @@ namespace MoziMusor
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
+
+                //Cache engedélyezése
+                rootFrame.CacheSize = 1;
+
+
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
@@ -102,5 +120,7 @@ namespace MoziMusor
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+
     }
 }

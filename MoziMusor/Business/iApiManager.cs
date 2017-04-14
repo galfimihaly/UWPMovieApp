@@ -9,5 +9,6 @@ namespace MoziMusor.Business
     public interface iApiManager
     {
         string GetMovieByTitle(string title);
+        string GetDetailsById(string key);
     }
 }

@@ -98,13 +98,14 @@
     <Compile Include="Business\iApiManager.cs" />
     <Compile Include="Business\JsonManager.cs" />
     <Compile Include="Business\MovieDbApiManager.cs" />
+    <Compile Include="Business\MovieInitializer.cs" />
     <Compile Include="Business\RssManager.cs" />
+    <Compile Include="Business\YouTubeApiManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\BasicJsonMovieModel.cs" />
-    <Compile Include="Models\DetailsJsonMovieModel.cs" />
-    <Compile Include="Models\RssMovieModel.cs" />
+    <Compile Include="Models\MovieModel.cs" />
+    <Compile Include="Models\ScreeningModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
