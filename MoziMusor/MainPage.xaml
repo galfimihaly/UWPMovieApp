@@ -47,6 +47,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
+
         <RelativePanel Grid.Row="0"
                        HorizontalAlignment="Stretch"
                        Background="{StaticResource TitleMenuBackgroundColor}">

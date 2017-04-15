@@ -46,10 +46,11 @@ namespace MoziMusor
 
         private async void InitializeMovies()
         {
+            MainFrame.Navigate(typeof(ProgressRingPage));
             currentApp.models = await MovieInitializer.InicializeMovies();
             MainFrame.Navigate(typeof(MoviesPage));
+           
             MoviesListBoxItem.IsSelected = true;
-            
         }
 
         private void MainFrame_SizeChanged(object sender, SizeChangedEventArgs e)

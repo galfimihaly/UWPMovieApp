@@ -17,14 +17,6 @@
                 <RowDefinition Height="132*"/>
             </Grid.RowDefinitions>
 
-            <!--Keresés mező-->
-            <!--<StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-                <AutoSuggestBox Width="200" QueryIcon="Find" HorizontalAlignment="Center" Margin="0,20,0,0"
-                            QuerySubmitted="OnQuerySubmitted" PlaceholderText="Keresés cím alapján"/>
-                <ProgressBar Width="200" Height="20" Margin="0,20,0,0" IsIndeterminate="True" 
-                         Visibility="Collapsed" x:Name="pbProgress"/>
-            </StackPanel>-->
-
             <!--Lista-->
             <ListView x:Name="MovieListView" Grid.RowSpan="3"
                   IsItemClickEnabled="True" ItemClick="MovieListView_ItemClick" SelectionMode="None">

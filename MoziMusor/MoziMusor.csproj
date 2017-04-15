@@ -125,6 +125,9 @@
     <Compile Include="Views\PricesPage.xaml.cs">
       <DependentUpon>PricesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProgressRingPage.xaml.cs">
+      <DependentUpon>ProgressRingPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PricesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressRingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -28,7 +28,6 @@ namespace MoziMusor.Views
         public MoviesPage()
         {
             this.InitializeComponent();
-
             MovieListView.ItemsSource = currentApp.models;
 
 
