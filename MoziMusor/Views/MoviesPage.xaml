@@ -8,6 +8,56 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="13*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="132*"/>
+            </Grid.RowDefinitions>
+
+            <!--Keresés mező-->
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                <AutoSuggestBox Width="200" QueryIcon="Find" HorizontalAlignment="Center" Margin="0,20,0,0"
+                            QuerySubmitted="OnQuerySubmitted" PlaceholderText="Keresés cím alapján"/>
+                <ProgressBar Width="200" Height="20" Margin="0,20,0,0" IsIndeterminate="True" 
+                         Visibility="Collapsed" x:Name="pbProgress"/>
+            </StackPanel>
+
+            <!--Lista-->
+            <ListView x:Name="MovieListView" Grid.RowSpan="3"
+                  IsItemClickEnabled="True" ItemClick="MovieListView_ItemClick" SelectionMode="None">
+
+                <!--Listaelem template-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Height="320" Width="900" Margin="0,20,0,0">                          
+                            <StackPanel Orientation="Horizontal"  Height="320" Width="900" Margin="0,20,0,0" >
+
+                                <!--Kép-->
+                                <Image Source="{Binding Image ,Converter={StaticResource ImageConverter}}" Width="320" Height="320" 
+                           HorizontalAlignment="Left"/>
+                                <StackPanel Orientation="Vertical"  Width="500">
+
+                                    <!--Cím-->
+                                    <TextBlock Text="{Binding Title}" FontSize="{ThemeResource TextStyleLargeFontSize}"/>
+
+                                    <!--Év-->
+                                    <TextBlock Text="{Binding Year}"/>
+
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="IdopontokPanel"  Orientation="Horizontal" Width="900">
+                                <!-- Itt lesznek majd az időponttal ellátott gombok-->
+                                <Button Content="{Binding time}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 
     </Grid>
 </Page>
