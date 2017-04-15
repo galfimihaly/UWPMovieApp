@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoziMusor.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,27 @@ namespace MoziMusor.Views
     /// </summary>
     public sealed partial class MovieDetails : Page
     {
+
+        App currentApp = Application.Current as App;
         public MovieDetails()
         {
             this.InitializeComponent();
+
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            tb.Text = currentApp.models.Where(x => x.title ==  e.Parameter as string).Single().overview;
+        }
+
+        private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
+        {
+            if (Frame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MoziMusor.Business;
+using MoziMusor.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,7 +36,8 @@ namespace MoziMusor.Views
 
         private void MovieListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var active = e.ClickedItem as MovieModel;
+            this.Frame.Navigate(typeof(MovieDetails), active.title);
         }
 
     }
