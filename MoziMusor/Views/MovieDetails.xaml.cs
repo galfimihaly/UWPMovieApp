@@ -34,7 +34,19 @@ namespace MoziMusor.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            tb.Text = currentApp.models.Where(x => x.title ==  e.Parameter as string).Single().overview;
+            MovieModel model = currentApp.models.Where(x => x.title == e.Parameter as string).Single();
+            
+
+            tb.Text = model.overview;
+            try
+            {
+                youtubeWebView.Navigate(new Uri(model.youtubeKey));
+            }
+            catch(Exception ex)
+            {
+                
+            }
+
         }
 
         private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)

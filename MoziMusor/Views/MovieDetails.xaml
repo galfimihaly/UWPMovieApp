@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="tb"   Text="{Binding overview}" TextWrapping="Wrap"></TextBlock>
+        <TextBlock x:Name="tb"  TextWrapping="Wrap"></TextBlock>
+
+        <WebView x:Name="youtubeWebView" Width="500" Height="300" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5"></WebView>
+        
     </Grid>
 </Page>
