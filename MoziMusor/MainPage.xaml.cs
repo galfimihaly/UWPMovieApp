@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MoziMusor.Models;
 using MoziMusor.Business;
+using MoziMusor.Views;
 using System.Text.RegularExpressions;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -48,7 +49,7 @@ namespace MoziMusor
             currentApp.models = await MovieInitializer.InicializeMovies();
             foreach (MovieModel model in currentApp.models)
             {
-                Hibadoboz.Text += model.title + "\b\n";
+               // Hibadoboz.Text += model.title + "\b\n"; 
             }
             return;
         }

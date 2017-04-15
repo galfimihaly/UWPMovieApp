@@ -70,15 +70,6 @@
                        Margin="16,0"
                        Text="MalomMozi" />
 
-            <AutoSuggestBox x:Name="SearchAutoSuggestBox"
-                            RelativePanel.AlignRightWithPanel="True"
-                            RelativePanel.AlignVerticalCenterWithPanel="True" 
-                            Height="30" Width="200"
-                            Margin="0,0,8,0"
-                            PlaceholderText="Search"
-                            QueryIcon="Find"
-                            AutoMaximizeSuggestionArea="True" Style="{StaticResource TitleAutoSuggestBoxStyle}" />
-
         </RelativePanel>
 
         <SplitView x:Name="MainSliptView"
@@ -121,15 +112,11 @@
                             <TextBlock Text="Névjegy" Margin="16,0,0,0" />
                         </StackPanel>
                     </ListBoxItem>
-
                 </ListBox>
             </SplitView.Pane>
 
             <SplitView.Content>
-                <ScrollViewer HorizontalScrollMode="Enabled">
-                    <TextBlock x:Name="Hibadoboz" Margin="30"/>
-                </ScrollViewer>
-                <!--<Frame x:Name="MainFrame" />-->
+                <Frame x:Name="MainFrame" />
             </SplitView.Content>
         </SplitView>
 

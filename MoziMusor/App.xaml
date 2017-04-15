@@ -9,7 +9,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!-- Felső menü -->
-            <SolidColorBrush Color="#F2F2F2" x:Key="TitleMenuBackgroundColor" />
+            <SolidColorBrush Color="Black" x:Key="TitleMenuBackgroundColor" />
 
             <!-- Hamburger színek -->
             <SolidColorBrush Color="#000000" x:Key="HamburgerForegroudColor" />

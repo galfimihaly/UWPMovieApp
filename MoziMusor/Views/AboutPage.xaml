@@ -8,6 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <ScrollViewer HorizontalScrollMode="Enabled">
+            <TextBlock x:Name="Hibadoboz" Margin="30"/>
+        </ScrollViewer>
     </Grid>
 </Page>
