@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoziMusor.Business;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,21 @@ namespace MoziMusor.Views
     /// </summary>
     public sealed partial class MoviesPage : Page
     {
+        App currentApp = Application.Current as App;
+
         public MoviesPage()
         {
             this.InitializeComponent();
+
+            MovieListView.ItemsSource = currentApp.models;
+
+
         }
+
+        private void MovieListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
     }
 }

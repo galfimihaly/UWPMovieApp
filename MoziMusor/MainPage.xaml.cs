@@ -33,25 +33,23 @@ namespace MoziMusor
         {
             this.InitializeComponent();
             currentApp = Application.Current as App;
-            Test();
+            InitializeMovies();
 
 
             // főoldallal induljon az alkalmazás
-            MainFrame.Navigate(typeof(MoviesPage));
 
             MainFrame.SizeChanged += MainFrame_SizeChanged;
 
 
 
         }
-        public async void Test()
+
+        private async void InitializeMovies()
         {
             currentApp.models = await MovieInitializer.InicializeMovies();
-            foreach (MovieModel model in currentApp.models)
-            {
-               // Hibadoboz.Text += model.title + "\b\n"; 
-            }
-            return;
+            MainFrame.Navigate(typeof(MoviesPage));
+            MoviesListBoxItem.IsSelected = true;
+            
         }
 
         private void MainFrame_SizeChanged(object sender, SizeChangedEventArgs e)

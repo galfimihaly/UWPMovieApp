@@ -11,7 +11,6 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="51*"/>
-                <ColumnDefinition Width="13*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
@@ -19,12 +18,12 @@
             </Grid.RowDefinitions>
 
             <!--Keresés mező-->
-            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <!--<StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                 <AutoSuggestBox Width="200" QueryIcon="Find" HorizontalAlignment="Center" Margin="0,20,0,0"
                             QuerySubmitted="OnQuerySubmitted" PlaceholderText="Keresés cím alapján"/>
                 <ProgressBar Width="200" Height="20" Margin="0,20,0,0" IsIndeterminate="True" 
                          Visibility="Collapsed" x:Name="pbProgress"/>
-            </StackPanel>
+            </StackPanel>-->
 
             <!--Lista-->
             <ListView x:Name="MovieListView" Grid.RowSpan="3"
@@ -37,21 +36,26 @@
                             <StackPanel Orientation="Horizontal"  Height="320" Width="900" Margin="0,20,0,0" >
 
                                 <!--Kép-->
-                                <Image Source="{Binding Image ,Converter={StaticResource ImageConverter}}" Width="320" Height="320" 
-                           HorizontalAlignment="Left"/>
+                                <Image Width="320" Height="320" 
+                           HorizontalAlignment="Left">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding poster}"/>
+                                    </Image.Source>
+                                </Image>
                                 <StackPanel Orientation="Vertical"  Width="500">
 
                                     <!--Cím-->
-                                    <TextBlock Text="{Binding Title}" FontSize="{ThemeResource TextStyleLargeFontSize}"/>
+                                    <TextBlock Text="{Binding title}" FontSize="{ThemeResource TextStyleExtraLargeFontSize}"/>
+                                    <TextBlock Text="{Binding originalTitle}" FontSize="{ThemeResource TextStyleLargeFontSize}"/>
 
                                     <!--Év-->
-                                    <TextBlock Text="{Binding Year}"/>
+                                    <!--<TextBlock Text="{Binding Year}"/>-->
 
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel x:Name="IdopontokPanel"  Orientation="Horizontal" Width="900">
                                 <!-- Itt lesznek majd az időponttal ellátott gombok-->
-                                <Button Content="{Binding time}" />
+                                <!--<Button Content="{Binding time}" />-->
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
