@@ -1,4 +1,5 @@
-﻿using MoziMusor.Models;
+﻿using MoziMusor.Business;
+using MoziMusor.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,7 +65,8 @@ namespace MoziMusor.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(WebViewPage), "http://www.malommozi.hu");
+            ScreeningModel screening = model.screenings.First();
+            this.Frame.Navigate(typeof(WebViewPage), ReserveLinkCreator.MakeReserveUri(screening.time, screening.hall));
         }
     }
 }
