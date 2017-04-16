@@ -8,6 +8,56 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="MOZI INFORMÁCIÓ" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+                <TextBlock Text="A Malom Mozi Kecskemét város szívében, a Malom Bevásárló Központ 3. emeletén található. A filmszínház 2008 óta a legjobb filmekkel és rendezvényekkel vár minden egyes látogatót segítőkész és kedves alkalmazottaival. A széles filmkínálatnak, az udvarias kiszolgálásnak, a kedvező áraknak és a magas technikai háttérnek  köszönhetően a mozi mind Kecskemét mind pedig a vidék egyik legkeresettebb és legközkedveltebb mozijává nőtte ki magát. Így ha valaki igazán jól akar szórakozni a Malom Mozi a legjobb hely rá!" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="10" TextAlignment="Justify"/>
+                <TextBlock Text="TEREM VÁLASZTÉK" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+                <Grid BorderBrush="#FFA49608" BorderThickness="2" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
+                    <Border Grid.Row="0" Grid.Column="0" Background="#FFA49608">
+                        <TextBlock Text="TEREMSZÁM" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                    <TextBlock Text="1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="3" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="4" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="5" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+
+                    <Border  Grid.Row="6" Grid.Column="0" BorderThickness="2" BorderBrush="#FFA49608">
+                        <TextBlock Text="ÖSSZESEN" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+
+                    <Border Grid.Row="0" Grid.Column="1" Background="#FFA49608">
+                        <TextBlock Text="FÉRŐHELY" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                    <TextBlock Text="176" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="136" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="303" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="85" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="140" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+
+                    <Border Grid.Row="6" Grid.Column="1" Background="#FFA49608">
+                        <TextBlock Text="840"  FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
