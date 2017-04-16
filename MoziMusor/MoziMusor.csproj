@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MoziMusor</RootNamespace>
     <AssemblyName>MoziMusor</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>hu-HU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
@@ -140,12 +140,23 @@
     <None Include="MoziMusor_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\ikon.png" />
+    <Content Include="Assets\ikon150x150.png" />
+    <Content Include="Assets\ikon310x150.png" />
+    <Content Include="Assets\ikon310x310.png" />
+    <Content Include="Assets\ikon44x44.png" />
+    <Content Include="Assets\ikon71x71.png" />
+    <Content Include="Images\at.png" />
     <Content Include="Images\bufe1.png" />
     <Content Include="Images\bufe2.png" />
     <Content Include="Images\bufe3.png" />
     <Content Include="Images\bufearak.png" />
+    <Content Include="Images\earth.png" />
     <Content Include="Images\kartyak.png" />
     <Content Include="Images\nyitvatartas.png" />
+    <Content Include="Images\phone.png" />
+    <Content Include="Images\social-facebook.png" />
+    <Content Include="Images\social-skype.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
