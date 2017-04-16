@@ -36,7 +36,7 @@ namespace MoziMusor.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MovieModel model = currentApp.models.Where(x => x.title == e.Parameter as string).Single();
+            MovieModel model = currentApp.models.Find(x => x.title == e.Parameter as string);
             
 
             tb.Text = model.overview;

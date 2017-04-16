@@ -1,5 +1,6 @@
 ﻿using MoziMusor.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Web.Http;
@@ -64,7 +65,6 @@ namespace MoziMusor.Business
 
             var jsonObj = JsonObject.Parse(result);
 
-
             try
             {
                 model.runtime = jsonObj.GetNamedNumber("runtime");
@@ -72,6 +72,15 @@ namespace MoziMusor.Business
                 model.youtubeKey = jsonObj.GetNamedObject("videos").GetNamedArray("results").GetObjectAt(0).GetNamedString("key");
 
                 model.youtubeKey = YouTubeApiManager.GetYoutubeEmbedUrl(model.youtubeKey);
+
+                model.genres = new List<string>();
+                var res = (uint)jsonObj.GetNamedArray("genres").Count;
+
+                for (uint i=0; i<res;  i++)
+                {
+                    model.genres.Add(jsonObj.GetNamedArray("genres").GetObjectAt(i).GetNamedString("name"));
+                }
+
 
             }
             catch
