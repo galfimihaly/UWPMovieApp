@@ -8,6 +8,52 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock  Text="CÍM" FontSize="16" FontWeight="Bold" Margin="0, 10" HorizontalAlignment="Center"/>
+                <TextBlock Text="6000 Kecskemét, Korona utca 2. - Malom Központ 3. emelet" TextWrapping="Wrap"  HorizontalAlignment="Center" Margin="0,0,0,10" />
+                <TextBlock  Text="TÉRKÉP" FontSize="16" FontWeight="Bold" Margin="0, 10" HorizontalAlignment="Center"/>
+                <!-- Itt lenne a Map megvalsóítása csak egy kicsit átláthatatlan egyelőre
+                <Maps:MapControl Width="300" Height="300" x:Name="MalomMap" MapServiceToken="Xlu4v1rdJVPSxgaGwq2e~aSeTcPyiJucSoTGvnbqpYA~Apb6lDI4hLc6kUJPDDHPoC6UXY06Gyx0eQQGBdnQ6woby2nk4NxZsQY6y11Ya25N">
+                    
+                </Maps:MapControl>
+                -->
+                <TextBlock  Text="AUTÓ" FontSize="16" FontWeight="Bold" Margin="0, 10" HorizontalAlignment="Center"/>
+                <Grid x:Name="AutovalGrid" Margin="30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Budapest felől" FontWeight="SemiBold" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Cegléd felől" FontWeight="SemiBold"  />
+                    <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="Dunaföldvár felől" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Békéscsaba irányából" FontWeight="SemiBold"  />
+                    <TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify" Padding="10,0,0,0" Text="az M5 autópályát a Kecskemét - Észak lehajtónál elhagyva közelítse meg a várost. Haladjon a Budai úton, majd tovább egyenesen a Jókai utcán a városközpont felé. A Piaristák terénél forduljon jobbra a Gáspár András körútra, ahol tovább haladva elér a Malom Központ épületéhez. A körútról könnyen megközelítheti parkolónkat." />
+                    <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify" Padding="10,0,0,0" Text="haladjon a Ceglédi úton, a vasúti átjáró után forduljon balra, a Bethlen körútra. A második forgalmi lámpás kereszteződésnél kanyarodjon jobbra, a Rákóczi útra. Az utca végén forduljon jobbra, és haladjon a Piaristák teréig, ahol kanyarodjon balra a Gáspár András körútra, innen egyenesen haladva eléri a Malom Központot, és parkolónkat." />
+                    <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify" Padding="10,0,0,0" Text="haladjon az Izsáki úton, majd a Dózsa György úton a belváros felé. A Petőfi Sándor utcán végighaladva egy körforgalomhoz érkezik, ahonnan táblák jelzik a Malom Központ parkolója felé vezető utakat." />
+                    <TextBlock Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify" Padding="10,0,0,0" Text="haladjon a Békéscsabai úton, majd az aluljáró után forduljon jobbra, a Bethlen körútra. A forgalmi lámpás kereszteződésnél forduljon balra, a Rákóczi útra. Az utca végén, a Tudomány és Technika Házánál forduljon jobbra, és haladjon a Piaristák teréig, ahol forduljon ballra a Gáspár András körútra, ahonnan egyenesen haladva megközelítheti parkolónkat." />
+                    
+                </Grid>
+                
+                <TextBlock  Text="PARKOLÁS" FontSize="16" FontWeight="Bold" Margin="0, 10" HorizontalAlignment="Center"/>
+                <TextBlock Margin="30,10" TextAlignment="Justify" TextWrapping="Wrap" Text="Mozi látogatók részére 3 óra ingyenes parkolást biztosítunk, a Malom Központ parkoló házában. 
+Kedvezményét a film előtt, a mozi személyzeténél érvényesítheti." />
+
+                <TextBlock  Text="BUSZ" FontSize="16" FontWeight="Bold" Margin="0, 10" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Text="Helyi buszjáratokkal a Széchenyi téri buszmegállónál, Dobó körúton vagy a Szalag Üzletháznál kell leszállni." HorizontalAlignment="Center" Margin="30,10"/>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Text="Helyközi járatoknál a távolsági buszpályaudvarról, a Noszlopy Gáspár parkból induló járatokkal közelíthető meg a Malom Központ épülete." HorizontalAlignment="Center" Margin="30,10" />
+                
+                
+
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

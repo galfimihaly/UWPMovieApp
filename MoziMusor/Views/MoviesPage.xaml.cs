@@ -30,6 +30,8 @@ namespace MoziMusor.Views
         {
             this.InitializeComponent();
             MovieListView.ItemsSource = currentApp.models;
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
 
 
         }
