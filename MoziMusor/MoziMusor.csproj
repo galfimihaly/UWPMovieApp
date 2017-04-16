@@ -99,6 +99,7 @@
     <Compile Include="Business\JsonManager.cs" />
     <Compile Include="Business\MovieDbApiManager.cs" />
     <Compile Include="Business\MovieInitializer.cs" />
+    <Compile Include="Business\ReserveLinkCreator.cs" />
     <Compile Include="Business\RssManager.cs" />
     <Compile Include="Business\YouTubeApiManager.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="Views\ProgressRingPage.xaml.cs">
       <DependentUpon>ProgressRingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WebViewPage.xaml.cs">
+      <DependentUpon>WebViewPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressRingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WebViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

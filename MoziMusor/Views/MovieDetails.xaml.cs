@@ -23,7 +23,7 @@ namespace MoziMusor.Views
     /// </summary>
     public sealed partial class MovieDetails : Page
     {
-
+        MovieModel model;
         App currentApp = Application.Current as App;
         public MovieDetails()
         {
@@ -32,11 +32,12 @@ namespace MoziMusor.Views
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 Windows.UI.Core.AppViewBackButtonVisibility.Visible;
+            model = new MovieModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MovieModel model = currentApp.models.Find(x => x.title == e.Parameter as string);
+            model = currentApp.models.Find(x => x.title == e.Parameter as string);
             
 
             tb.Text = model.overview;
@@ -56,8 +57,14 @@ namespace MoziMusor.Views
             if (Frame.CanGoBack && e.Handled == false)
             {
                 e.Handled = true;
+                youtubeWebView.Visibility = Visibility.Collapsed;
                 Frame.GoBack();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(WebViewPage), "http://www.malommozi.hu");
         }
     }
 }

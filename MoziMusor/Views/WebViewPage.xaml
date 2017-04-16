@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MoziMusor.Views.MovieDetails"
+    x:Class="MoziMusor.Views.WebViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoziMusor.Views"
@@ -7,14 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <TextBlock x:Name="tb"  TextWrapping="Wrap"></TextBlock>
-
-        <Button Content="foglalástesztgomb" Click="Button_Click"></Button>
-
-        <WebView x:Name="youtubeWebView" Width="500" Height="300" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5"></WebView>
-        
+        <WebView x:Name="moziwebView" ></WebView>
     </Grid>
 </Page>
