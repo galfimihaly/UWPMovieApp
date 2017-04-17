@@ -24,30 +24,23 @@
                 <!--Listaelem template-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical" Height="320" Width="900" Margin="0,20,0,0">                          
-                            <StackPanel Orientation="Horizontal"  Height="320" Width="900" Margin="0,20,0,0" >
+                        <StackPanel Orientation="Horizontal"  Height="320" Margin="8" >
 
-                                <!--Kép-->
-                                <Image Width="320" Height="320" 
-                           HorizontalAlignment="Left">
-                                    <Image.Source>
-                                        <BitmapImage UriSource="{Binding poster}"/>
-                                    </Image.Source>
-                                </Image>
-                                <StackPanel Orientation="Vertical"  Width="500">
+                            <!--Kép-->
+                            <Image Width="210" Height="280" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding poster}"/>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Orientation="Vertical" Margin="8">
 
-                                    <!--Cím-->
-                                    <TextBlock Text="{Binding title}" FontSize="{ThemeResource TextStyleExtraLargeFontSize}"/>
-                                    <TextBlock Text="{Binding originalTitle}" FontSize="{ThemeResource TextStyleLargeFontSize}"/>
+                                <!--Cím-->
+                                <TextBlock Text="{Binding title}" 
+                                           FontSize="{ThemeResource TextStyleExtraLargeFontSize}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding originalTitle}"
+                                           FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="Wrap"/>
 
-                                    <!--Év-->
-                                    <!--<TextBlock Text="{Binding Year}"/>-->
 
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="IdopontokPanel"  Orientation="Horizontal" Width="900">
-                                <!-- Itt lesznek majd az időponttal ellátott gombok-->
-                                <!--<Button Content="{Binding time}" />-->
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

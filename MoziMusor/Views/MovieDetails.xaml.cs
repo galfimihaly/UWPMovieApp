@@ -41,10 +41,22 @@ namespace MoziMusor.Views
             model = currentApp.models.Find(x => x.title == e.Parameter as string);
             
 
-            tb.Text = model.overview;
+            
             try
             {
+                titleTextBox.Text = model.title;
+                overviewTextBox.Text = model.overview;
                 youtubeWebView.Navigate(new Uri(model.youtubeKey));
+
+                for(int i=0; i<model.screenings.Count; i++)
+                {
+                    Button reserveButton = new Button();
+                    reserveButton.Content = model.screenings.ElementAt(i).time;
+                    reserveButton.Click += Button_Click;
+                    buttonsStackPanel.Children.Add(reserveButton);                 
+
+                }
+                
             }
             catch(Exception ex)
             {
@@ -65,7 +77,8 @@ namespace MoziMusor.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ScreeningModel screening = model.screenings.First();
+            Button button = (Button)e.OriginalSource;
+            ScreeningModel screening = model.screenings.Find(x => x.time.ToString() == button.Content.ToString());
             this.Frame.Navigate(typeof(WebViewPage), ReserveLinkCreator.MakeReserveUri(screening.time, screening.hall));
         }
     }

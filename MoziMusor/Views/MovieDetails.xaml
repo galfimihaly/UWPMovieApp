@@ -7,14 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <ScrollViewer>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="8"  >
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
 
-        <TextBlock x:Name="tb"  TextWrapping="Wrap"></TextBlock>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="titleTextBox" Grid.Row="0" FontSize="{ThemeResource TextStyleExtraLargeFontSize}"></TextBlock>
+        <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1"/>
+        <WebView x:Name="youtubeWebView" Height="300" Width="500"
+                 HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Grid.Row="2"/>
+        <StackPanel x:Name="buttonsStackPanel" Grid.Row="3">
+            <!-- Ide kerülnek majd a gombok-->
 
-        <Button Content="foglalástesztgomb" Click="Button_Click"></Button>
-
-        <WebView x:Name="youtubeWebView" Width="500" Height="300" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5"></WebView>
-        
+        </StackPanel>
     </Grid>
+    </ScrollViewer>
 </Page>
