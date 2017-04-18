@@ -1,0 +1,115 @@
+﻿<Page
+    x:Class="MoziMusor.Views.InfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoziMusor.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="MOZI INFORMÁCIÓ" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+                <TextBlock Text="A Malom Mozi Kecskemét város szívében, a Malom Bevásárló Központ 3. emeletén található. A filmszínház 2008 óta a legjobb filmekkel és rendezvényekkel vár minden egyes látogatót segítőkész és kedves alkalmazottaival. A széles filmkínálatnak, az udvarias kiszolgálásnak, a kedvező áraknak és a magas technikai háttérnek  köszönhetően a mozi mind Kecskemét mind pedig a vidék egyik legkeresettebb és legközkedveltebb mozijává nőtte ki magát. Így ha valaki igazán jól akar szórakozni a Malom Mozi a legjobb hely rá!" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="30,10" TextAlignment="Justify"/>
+                <TextBlock Text="TEREM VÁLASZTÉK" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+                
+                <Grid x:Name="TermekGrid" BorderBrush="#FFA49608" BorderThickness="2" Margin="30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" Background="#FFA49608">
+                        <TextBlock Text="TEREMSZÁM" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                    <TextBlock Text="1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="3" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="4" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="5" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Margin="5"/>
+
+                    <Border  Grid.Row="6" Grid.Column="0" BorderThickness="2" BorderBrush="#FFA49608">
+                        <TextBlock Text="ÖSSZESEN" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+
+                    <Border Grid.Row="0" Grid.Column="1" Background="#FFA49608">
+                        <TextBlock Text="FÉRŐHELY" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                    <TextBlock Text="176" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="136" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="303" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="85" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="140" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Margin="5"/>
+
+                    <Border Grid.Row="6" Grid.Column="1" Background="#FFA49608">
+                        <TextBlock Text="840"  FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="10"/>
+                    </Border>
+                    
+                </Grid>
+                <TextBlock Text="Nagyobb csoportokat is be tudunk fogadni." HorizontalAlignment="Center" />
+                <TextBlock Text="Terem bérlésről információ: +3676900120"  HorizontalAlignment="Center"/>
+
+                <TextBlock Text="ELÉRHETŐSÉG" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+                
+                <Grid x:Name="ElerhetosegGrid"  Margin="30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0"  Source="ms-appx:///Images/phone.png" Width="50" Height="50"/>
+                    <Image Grid.Row="1" Grid.Column="0"  Source="ms-appx:///Images/at.png" Width="50" Height="50"/>
+                    <Image Grid.Row="2" Grid.Column="0"  Source="ms-appx:///Images/earth.png" Width="50" Height="50" />
+                    <Image Grid.Row="3" Grid.Column="0"  Source="ms-appx:///Images/social-facebook.png" Width="50" Height="50"/>
+                    <Image Grid.Row="4" Grid.Column="0"  Source="ms-appx:///Images/social-skype.png" Width="50" Height="50"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="+3676900120 (H-P 12-20 óra, Szo-V 10-20 óra között hívható)"
+                               TextWrapping="Wrap"  VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="kecskemet@malommozi.hu
+                               callcenter@malommozi.hu" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="http://www.malommozi.hu/" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="facebook.com/malommozi" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="malom.mozi" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </Grid>
+
+                <Grid x:Name="NyitvatartasGrid" Margin="30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="NYITVATARTÁS" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Pénztár nyitás" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Pénztár zárás" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="első előadás előtt fél órával" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="utolsó előadás után negyed órával" HorizontalAlignment="Center"/>
+                </Grid>
+                
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

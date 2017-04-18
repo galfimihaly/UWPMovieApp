@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="MoziMusor.Views.ProgressRingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoziMusor.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="ProgressPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Filmek betöltése..." Foreground="#FFC70000" Margin="0, 10" FontSize="14" FontWeight="Light"/>
+            <ProgressRing x:Name="prgRing" IsActive="True" Height="100" Width="100"                      
+                      Visibility="Visible" Foreground="#FFC70000"/>
+        </StackPanel>
+    </Grid>
+</Page>
