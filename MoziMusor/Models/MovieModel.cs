@@ -14,17 +14,17 @@ namespace MoziMusor.Models
 
         //az első alap lekérdezésből
         public int id;
-        public string title;
-        public string originalTitle;
-        public string poster;
-        public bool adult;
-        public float voteAverage;
-        public string overview;
+        public string title { get; set; }
+        public string originalTitle { get; set; }
+        public string poster { get; set; }
+        public bool adult { get; set; }
+        public float voteAverage { get; set; } 
+        public string overview { get; set; }
 
         //a második részletes lekérdezésből
         public string youtubeKey;
-        public List<string> genres;
-        public Double runtime;
+        public List<string> genres { get; set; }
+        public Double runtime { get; set; }
 
     }
 }
