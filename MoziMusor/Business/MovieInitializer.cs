@@ -16,7 +16,7 @@ namespace MoziMusor.Business
             List<MovieModel> listFromRss = new List<MovieModel>();
             iApiManager  apiManager = new MovieDbApiManager();
             List<MovieModel> models = new List<MovieModel>();
-            MovieModel jsonModel = new MovieModel();
+            MovieModel jsonModel;
 
             string uri;
             string preparedTitle;
@@ -29,6 +29,8 @@ namespace MoziMusor.Business
 
             foreach (MovieModel model in listFromRss)
             {
+                jsonModel = new MovieModel();
+
                 preparedTitle = model.title.Replace(" ", "+").Replace("3D", "");
 
                 uri = apiManager.GetMovieByTitle(preparedTitle);

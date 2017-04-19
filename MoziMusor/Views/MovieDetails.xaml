@@ -13,14 +13,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
         <TextBlock x:Name="titleTextBox" Grid.Row="0" FontSize="{ThemeResource TextStyleExtraLargeFontSize}"></TextBlock>
         <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1"/>
-        <WebView x:Name="youtubeWebView" Height="300" Width="500"
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Grid.Row="2"/>
+        <WebView x:Name="youtubeWebView" MinHeight="280" MinWidth="400" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  Margin="4" Grid.Row="2"/>
         <StackPanel x:Name="buttonsStackPanel" Grid.Row="3">
             <!-- Ide kerülnek majd a gombok-->
 
