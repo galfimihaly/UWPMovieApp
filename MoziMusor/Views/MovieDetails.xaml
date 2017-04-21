@@ -5,25 +5,56 @@
     xmlns:local="using:MoziMusor.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:MoziMusor.Converters"
     mc:Ignorable="d">
 
-    <ScrollViewer>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="8"  >
+    <Page.Resources>
+        <converter:RatingConverter x:Key="ratingConverter" />
+    </Page.Resources>
 
+    <ScrollViewer>
+    <Grid x:Name="movieDetailsGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12" >
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-
         </Grid.RowDefinitions>
-        <TextBlock x:Name="titleTextBox" Grid.Row="0" FontSize="{ThemeResource TextStyleExtraLargeFontSize}"></TextBlock>
-        <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1"/>
-        <WebView x:Name="youtubeWebView" MinHeight="280" MinWidth="400" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  Margin="4" Grid.Row="2"/>
-        <StackPanel x:Name="buttonsStackPanel" Grid.Row="3">
-            <!-- Ide kerülnek majd a gombok-->
 
+            <TextBlock x:Name="titleTextBox" Grid.Row="0" Text="{Binding title}"
+                       FontSize="{ThemeResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1" Text="{Binding overView}"/>
+
+            <WebView x:Name="youtubeWebView" MinHeight="360" MinWidth="320" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  Margin="4" Grid.Row="2"/>
+        
+            <TextBlock Text="Eredeti cím: " Grid.Row="3" VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
+            <TextBlock x:Name="originalTitleTextBox" Grid.Row="3"  VerticalAlignment="Center"
+                       Text="{Binding originalTitle}" HorizontalAlignment="Right" />
+
+            <TextBlock Text="Értékelés: " Grid.Row="4"  VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='1'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='2'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='3'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='4'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='5'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='6'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='7'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='8'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='9'}" />
+                <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='10'}" />
+            </StackPanel>
+
+        
+            <StackPanel x:Name="buttonsStackPanel" Grid.Row="5" HorizontalAlignment="Center">
+            <!-- Ide kerülnek majd a gombok-->
         </StackPanel>
     </Grid>
     </ScrollViewer>

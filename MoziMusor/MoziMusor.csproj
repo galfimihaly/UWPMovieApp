@@ -102,6 +102,8 @@
     <Compile Include="Business\ReserveLinkCreator.cs" />
     <Compile Include="Business\RssManager.cs" />
     <Compile Include="Business\YouTubeApiManager.cs" />
+    <Compile Include="Converters\GenresConverter.cs" />
+    <Compile Include="Converters\RatingConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

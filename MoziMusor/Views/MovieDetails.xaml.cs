@@ -24,12 +24,12 @@ namespace MoziMusor.Views
     /// </summary>
     public sealed partial class MovieDetails : Page
     {
+
         MovieModel model;
         App currentApp = Application.Current as App;
         public MovieDetails()
         {
             this.InitializeComponent();
-
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 Windows.UI.Core.AppViewBackButtonVisibility.Visible;
@@ -39,14 +39,20 @@ namespace MoziMusor.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             model = currentApp.models.Find(x => x.title == e.Parameter as string);
-            
+            movieDetailsGrid.DataContext = model;
 
-            
+
             try
             {
                 titleTextBox.Text = model.title;
+                originalTitleTextBox.Text = model.originalTitle;
                 overviewTextBox.Text = model.overview;
                 youtubeWebView.Navigate(new Uri(model.youtubeKey));
+
+                foreach(string genre in model.genres)
+                {
+                    
+                }
 
                 for(int i=0; i<model.screenings.Count; i++)
                 {
@@ -56,6 +62,7 @@ namespace MoziMusor.Views
                     buttonsStackPanel.Children.Add(reserveButton);                 
 
                 }
+                
                 
             }
             catch(Exception ex)
@@ -67,9 +74,9 @@ namespace MoziMusor.Views
 
         private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
         {
+            youtubeVideoStop();
             if (Frame.CanGoBack && e.Handled == false)
             {
-                youtubeVideoStop();
                 e.Handled = true;
                 Frame.GoBack();
             }
