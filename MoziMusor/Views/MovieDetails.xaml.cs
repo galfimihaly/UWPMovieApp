@@ -69,17 +69,25 @@ namespace MoziMusor.Views
         {
             if (Frame.CanGoBack && e.Handled == false)
             {
+                youtubeVideoStop();
                 e.Handled = true;
-                youtubeWebView.Visibility = Visibility.Collapsed;
                 Frame.GoBack();
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            youtubeVideoStop();
             Button button = (Button)e.OriginalSource;
             ScreeningModel screening = model.screenings.Find(x => x.time.ToString() == button.Content.ToString());
             this.Frame.Navigate(typeof(WebViewPage), ReserveLinkCreator.MakeReserveUri(screening.time, screening.hall));
+
+        }
+
+        private void youtubeVideoStop()
+        {
+            youtubeWebView.NavigateToString("");
         }
     }
 }
