@@ -74,7 +74,7 @@ namespace MoziMusor.Views
 
         private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
         {
-            youtubeVideoStop();
+
             if (Frame.CanGoBack && e.Handled == false)
             {
                 e.Handled = true;
@@ -84,17 +84,23 @@ namespace MoziMusor.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            youtubeVideoStop();
             Button button = (Button)e.OriginalSource;
             ScreeningModel screening = model.screenings.Find(x => x.time.ToString() == button.Content.ToString());
             this.Frame.Navigate(typeof(WebViewPage), ReserveLinkCreator.MakeReserveUri(screening.time, screening.hall));
 
         }
 
+        //hogy oldalváltáskor megálljon a videó
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            youtubeVideoStop();
+            base.OnNavigatedFrom(e);
+        }
         private void youtubeVideoStop()
         {
             youtubeWebView.NavigateToString("");
         }
+
+
     }
 }
