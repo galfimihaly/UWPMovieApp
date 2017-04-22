@@ -49,11 +49,6 @@ namespace MoziMusor.Views
                 overviewTextBox.Text = model.overview;
                 youtubeWebView.Navigate(new Uri(model.youtubeKey));
 
-                foreach(string genre in model.genres)
-                {
-                    
-                }
-
                 for(int i=0; i<model.screenings.Count; i++)
                 {
                     Button reserveButton = new Button();

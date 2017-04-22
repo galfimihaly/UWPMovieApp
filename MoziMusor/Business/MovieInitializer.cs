@@ -43,11 +43,11 @@ namespace MoziMusor.Business
                 try
                 {
 
-                    jsonModel.screenings = model.screenings;
-
                     jsonModel = await jsonManager.RetrieveBasic(uri);
 
                     jsonModel = await jsonManager.RetrieveDetails(jsonModel);
+
+                    jsonModel.screenings = model.screenings;
 
                     jsonModel.title = model.title;
 
