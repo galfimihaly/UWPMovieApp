@@ -3,50 +3,55 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoziMusor.Views"
+    xmlns:converter="using:MoziMusor.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="51*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="132*"/>
-            </Grid.RowDefinitions>
+    <Page.Resources>
+        <converter:GenresConverter x:Key="genresConverter" />
+    </Page.Resources>
 
-            <!--Lista-->
-            <ListView x:Name="MovieListView" Grid.RowSpan="3"
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+
+        <!--Lista-->
+        <ListView x:Name="MovieListView"
                   IsItemClickEnabled="True" ItemClick="MovieListView_ItemClick" SelectionMode="None">
 
-                <!--Listaelem template-->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal"  Height="320" Margin="8" >
+            <!--Listaelem template-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid  Height="296" Margin="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="216"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Kép-->
+                        <Image Width="212" Height="280" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0">
+                            <Image.Source>
+                                <BitmapImage UriSource="{Binding poster}"/>
+                            </Image.Source>
+                        </Image>
 
-                            <!--Kép-->
-                            <Image Width="210" Height="280" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding poster}"/>
-                                </Image.Source>
-                            </Image>
-                            <StackPanel Orientation="Vertical" Margin="8">
+                        <StackPanel Orientation="Vertical" Margin="4" Grid.Column="1">
 
                                 <!--Cím-->
-                                <TextBlock Text="{Binding title}" 
-                                           FontSize="{ThemeResource TextStyleExtraLargeFontSize}" TextWrapping="Wrap"/>
-                                <TextBlock Text="{Binding originalTitle}"
-                                           FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding title}"
+                                               FontSize="{ThemeResource TextStyleExtraLargeFontSize}" TextWrapping="WrapWholeWords"/>
+                                <!--Eredeti cím-->
+                            <TextBlock Text="{Binding originalTitle}"
+                                               FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="WrapWholeWords"/>
+                                <!--Műfajok-->
+                            <TextBlock Text="{Binding genres, Converter={StaticResource genresConverter}}"
+                                               FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="WrapWholeWords"/>
 
-
-                            </StackPanel>
                         </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>
