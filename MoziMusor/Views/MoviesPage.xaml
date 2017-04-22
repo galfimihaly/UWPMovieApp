@@ -39,13 +39,13 @@
 
                                 <!--Cím-->
                             <TextBlock Text="{Binding title}"
-                                               FontSize="{ThemeResource TextStyleExtraLargeFontSize}" TextWrapping="WrapWholeWords"/>
+                                               FontSize="{ThemeResource TextStyleExtraLargeFontSize}" TextWrapping="WrapWholeWords" />
                                 <!--Eredeti cím-->
                             <TextBlock Text="{Binding originalTitle}"
                                                FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="WrapWholeWords"/>
                                 <!--Műfajok-->
                             <TextBlock Text="{Binding genres, Converter={StaticResource genresConverter}}"
-                                               FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="WrapWholeWords"/>
+                                               FontSize="{ThemeResource TextStyleLargeFontSize}" FontWeight="Light"  TextWrapping="WrapWholeWords"/>
 
                         </StackPanel>
                     </Grid>

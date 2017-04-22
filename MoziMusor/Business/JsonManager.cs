@@ -60,7 +60,7 @@ namespace MoziMusor.Business
 
         public async Task<MovieModel> RetrieveDetails(MovieModel model)
         {
-           
+            
             HttpResponseMessage response = await client.GetAsync(new Uri(dbApi.GetDetailsById(model.id.ToString())));
             string result = await response.Content.ReadAsStringAsync();
 
@@ -74,20 +74,34 @@ namespace MoziMusor.Business
 
                 model.youtubeKey = YouTubeApiManager.GetYoutubeEmbedUrl(model.youtubeKey);
 
-                model.genres = new List<string>();
-                var res = (uint)jsonObj.GetNamedArray("genres").Count;
-
-                for (uint i=0; i<res;  i++)
-                {
-                    model.genres.Add(jsonObj.GetNamedArray("genres").GetObjectAt(i).GetNamedString("name"));
-                }
-
-
             }
-            catch
+            catch (Exception)
             {
-                model.runtime = 0;
+
             }
+            finally
+            {
+                try
+                {
+                    model.genres = new List<string>();
+
+                    var res = (uint)jsonObj.GetNamedArray("genres").Count;
+                    if (res != 0)
+                    {
+                        for (uint i = 0; i < res; i++)
+                        {
+                            model.genres.Add(jsonObj.GetNamedArray("genres").GetObjectAt(i).GetNamedString("name"));
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+                
+            }
+
+            
 
             return model;
         }

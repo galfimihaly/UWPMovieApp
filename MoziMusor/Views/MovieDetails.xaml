@@ -25,21 +25,21 @@
         </Grid.RowDefinitions>
 
             <TextBlock x:Name="titleTextBox" Grid.Row="0"
-                       FontSize="{ThemeResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center"/>
+                       FontSize="{ThemeResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-            <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1"/>
+            <TextBlock x:Name="overviewTextBox" TextWrapping="Wrap" Grid.Row="1" TextAlignment="Justify"/>
 
             <WebView x:Name="youtubeWebView" MinHeight="360" MinWidth="320" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                   Margin="4" Grid.Row="2"/>
-        
-            <TextBlock Text="Eredeti cím: " Grid.Row="3" VerticalAlignment="Center"
-                        HorizontalAlignment="Left"/>
-            <TextBlock x:Name="originalTitleTextBox" Grid.Row="3"  VerticalAlignment="Center"
+
+            <TextBlock x:Name="oTitleTextBlock" Text="Eredeti cím: " Grid.Row="3" VerticalAlignment="Center"
+                        HorizontalAlignment="Left" FontWeight="SemiBold" Margin="4"/>
+            <TextBlock x:Name="originalTitleTextBlock" Grid.Row="3"  VerticalAlignment="Center"
                         HorizontalAlignment="Right" />
 
-            <TextBlock Text="Értékelés: " Grid.Row="4"  VerticalAlignment="Center"
-                        HorizontalAlignment="Left"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Right">
+            <TextBlock x:Name="voteTextBlock"  Text="Értékelés: " Grid.Row="4"  VerticalAlignment="Center"
+                        HorizontalAlignment="Left" FontWeight="SemiBold" Margin="4"/>
+            <StackPanel x:Name="voteStackPanel" Orientation="Horizontal" Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Right">
                 <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='1'}" />
                 <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='2'}" />
                 <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='3'}" />
