@@ -15,14 +15,11 @@ namespace MoziMusor.Business
         private const string DETAILS_API_BASE = "https://api.themoviedb.org/3/movie/";
         private const string APPEND_VIDEOS = "&append_to_response=videos";
         private const string IMAGE_API_BASE = "https://image.tmdb.org/t/p/";
-
-
-
+        private const string QUERY = "&query=";
 
         //ezzel állíthatjuk be, hogy mekkora méretű képet szeretnénk visszakapni
         private string image_size = "w500";
 
-        private const string QUERY = "&query=";
 
         private string language = "&language=hu";
 
