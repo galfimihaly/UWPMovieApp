@@ -13,8 +13,6 @@ namespace MoziMusor.Business
         public static string MakeReserveUri(DateTime date, int hall)
         {
             string datestring = date.ToString("yyyyMMddHHmm");
-                //.Year.ToString() + date.Month.ToString()
-               // + date.Day.ToString() + date.Hour.ToString() + date.Minute.ToString();
 
             return string.Format("{0}{1}&t={1}00&hall={2}", URI_BASE, datestring ,hall.ToString());
         }

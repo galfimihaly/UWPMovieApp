@@ -24,12 +24,12 @@ namespace MoziMusor.Views
     /// </summary>
     public sealed partial class MovieDetails : Page
     {
+
         MovieModel model;
         App currentApp = Application.Current as App;
         public MovieDetails()
         {
             this.InitializeComponent();
-
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 Windows.UI.Core.AppViewBackButtonVisibility.Visible;
@@ -39,12 +39,13 @@ namespace MoziMusor.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             model = currentApp.models.Find(x => x.title == e.Parameter as string);
-            
+            movieDetailsGrid.DataContext = model;
 
-            
+
             try
             {
                 titleTextBox.Text = model.title;
+                originalTitleTextBox.Text = model.originalTitle;
                 overviewTextBox.Text = model.overview;
                 youtubeWebView.Navigate(new Uri(model.youtubeKey));
 
@@ -57,6 +58,7 @@ namespace MoziMusor.Views
 
                 }
                 
+                
             }
             catch(Exception ex)
             {
@@ -67,10 +69,10 @@ namespace MoziMusor.Views
 
         private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
         {
+
             if (Frame.CanGoBack && e.Handled == false)
             {
                 e.Handled = true;
-                youtubeWebView.Visibility = Visibility.Collapsed;
                 Frame.GoBack();
             }
         }
@@ -80,6 +82,20 @@ namespace MoziMusor.Views
             Button button = (Button)e.OriginalSource;
             ScreeningModel screening = model.screenings.Find(x => x.time.ToString() == button.Content.ToString());
             this.Frame.Navigate(typeof(WebViewPage), ReserveLinkCreator.MakeReserveUri(screening.time, screening.hall));
+
         }
+
+        //hogy oldalváltáskor megálljon a videó
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            youtubeVideoStop();
+            base.OnNavigatedFrom(e);
+        }
+        private void youtubeVideoStop()
+        {
+            youtubeWebView.NavigateToString("");
+        }
+
+
     }
 }

@@ -34,6 +34,7 @@ namespace MoziMusor.Business
                 model.voteAverage = (float)movieData.GetNamedNumber("vote_average");
                 model.overview = overView;
                 model.poster = dbApi.GetMoviePoster(movieData.GetNamedString("poster_path"));
+                model.adult = movieData.GetNamedValue("adult").GetBoolean();
                 
 
                 if (originalTitle != "")

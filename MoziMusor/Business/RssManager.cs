@@ -15,7 +15,6 @@ namespace MoziMusor.Business
 {
     public class RssManager
     {
-        public string eredmeny;
 
         public Uri RssUri = new Uri("http://www.malommozi.hu/rss.php");
 
