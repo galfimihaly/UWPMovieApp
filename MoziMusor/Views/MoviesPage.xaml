@@ -45,7 +45,7 @@
                                                FontSize="{ThemeResource TextStyleLargeFontSize}" TextWrapping="WrapWholeWords"/>
                                 <!--Műfajok-->
                             <TextBlock Text="{Binding genres, Converter={StaticResource genresConverter}}"
-                                               FontSize="{ThemeResource TextStyleLargeFontSize}" FontWeight="Light"  TextWrapping="WrapWholeWords"/>
+                                               FontSize="14" FontWeight="Light"  TextWrapping="WrapWholeWords"/>
 
                         </StackPanel>
                     </Grid>

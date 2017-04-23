@@ -73,8 +73,7 @@ namespace MoziMusor.Views
                 {
                     youtubeWebView.Navigate(new Uri(model.youtubeKey));
                 }
-                
-                //linkHyperlinkButton.NavigateUri = new Uri(model.link);
+
             }
             catch(Exception)
             {
