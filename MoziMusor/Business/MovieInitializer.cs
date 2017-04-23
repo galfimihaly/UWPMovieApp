@@ -51,6 +51,7 @@ namespace MoziMusor.Business
 
                     jsonModel.title = model.title;
 
+                    jsonModel.link = model.link;
 
                 }
                 catch

@@ -14,7 +14,7 @@ namespace MoziMusor.Converters
             string genres = "";
             List<string> genresList = value as List<string>;
             int i;
-            if (genresList!=null)
+            if (genresList!=null && genresList.Count > 0)
             {
                 for (i = 0; i < genresList.Count - 1; i++)
                 {

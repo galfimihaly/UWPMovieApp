@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:Name="ProgressPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Filmek betöltése..." Foreground="#FFC70000" Margin="0, 10" FontSize="14" FontWeight="Light"/>
+            <TextBlock Text="Filmek betöltése..." Foreground="#FFC70000" Margin="0, 12" FontSize="14" FontWeight="Light"/>
             <ProgressRing x:Name="prgRing" IsActive="True" Height="100" Width="100"                      
                       Visibility="Visible" Foreground="#FFC70000"/>
         </StackPanel>

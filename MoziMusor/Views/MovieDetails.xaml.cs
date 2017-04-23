@@ -45,24 +45,55 @@ namespace MoziMusor.Views
             try
             {
                 titleTextBox.Text = model.title;
-                originalTitleTextBox.Text = model.originalTitle;
-                overviewTextBox.Text = model.overview;
-                youtubeWebView.Navigate(new Uri(model.youtubeKey));
 
-                for(int i=0; i<model.screenings.Count; i++)
+                if(model.originalTitle != "")
                 {
-                    Button reserveButton = new Button();
-                    reserveButton.Content = model.screenings.ElementAt(i).time;
-                    reserveButton.Click += Button_Click;
-                    buttonsStackPanel.Children.Add(reserveButton);                 
-
+                    originalTitleTextBlock.Text = model.originalTitle;
                 }
+                else
+                {
+                    oTitleTextBlock.Visibility = Visibility.Collapsed;
+                    originalTitleTextBlock.Visibility = Visibility.Collapsed;
+                }
+
+                if (model.overview != null)
+                {
+                    overviewTextBox.Text = model.overview;
+                }
+                else
+                {
+                    overviewTextBox.Visibility = Visibility.Collapsed;
+                }              
                 
-                
+                if(model.youtubeKey == null)
+                {
+                    youtubeWebView.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    youtubeWebView.Navigate(new Uri(model.youtubeKey));
+                }
+
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 
+            }
+            finally
+            {
+                //ha vannak időpontok
+                if(model.screenings.Count != 0)
+                {
+                    //akkor helyezze el a felületen az időpontokat (gombok)
+                    for (int i = 0; i < model.screenings.Count; i++)
+                    {
+                        Button reserveButton = new Button();
+                        reserveButton.Content = model.screenings.ElementAt(i).time;
+                        reserveButton.Margin = new Thickness(0, 8, 0, 8);
+                        reserveButton.Click += Button_Click;
+                        buttonsStackPanel.Children.Add(reserveButton);
+                    }
+                }                
             }
 
         }
@@ -96,6 +127,9 @@ namespace MoziMusor.Views
             youtubeWebView.NavigateToString("");
         }
 
-
+        private void linkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(WebViewPage), model.link);
+        }
     }
 }
