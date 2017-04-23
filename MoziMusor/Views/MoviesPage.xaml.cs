@@ -41,6 +41,12 @@ namespace MoziMusor.Views
             var active = e.ClickedItem as MovieModel;
             this.Frame.Navigate(typeof(MovieDetails), active.title);
         }
-
+        /*
+        //ne lehessen visszanavigálni a betöltő ring page-re
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.Frame.BackStack.Remove(this.Frame.BackStack.LastOrDefault());
+        }
+        */
     }
 }

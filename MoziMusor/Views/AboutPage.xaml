@@ -9,7 +9,22 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer HorizontalScrollMode="Enabled">
-            <TextBlock x:Name="Hibadoboz" Margin="30"/>
+            <StackPanel Orientation="Vertical" >
+                <TextBlock  Text="LEÍRÁS" FontSize="16" FontWeight="Bold" Margin="0, 12" HorizontalAlignment="Center"/>
+                <TextBlock  Text="Az alkalmazás a Pallasz Athéné Egyetem GAMF Karának Alkalmazásfejlesztés mobil eszkzökre A nevű tantárgya keretén belül készült. Használata kizárólag edukációs kereteken belül lehetséges! Az előforduló hibákért a fejlesztők nem vállalnak felelősséget. Az applikáció nem áll kapcsolatban a Malom Mozi Kft.-vel. Az adatok szerzői jogvédelem alatt áll, azok bármilyen formában történő felhasználása a személyes használatot meghaladó mértékben kizárólag a Malom Mozi Kft. kifejezett erre vonatkozó írásos engedélyével lehetséges. Tilos az oldalon szereplő tartalmak értékesítése. " TextWrapping="Wrap" TextAlignment="Justify"  Margin="32, 8" HorizontalAlignment="Center"/>
+                
+                <TextBlock  Text="KÉSZÍTŐK" FontSize="16" FontWeight="Bold" Margin="0, 12" HorizontalAlignment="Center"/>
+                <TextBlock Text="Kiss Csaba"  FontWeight="SemiBold" HorizontalAlignment="Center"  />
+                <TextBlock Text="Gálfi Mihály" FontWeight="SemiBold" Margin="0, 0, 0, 12" HorizontalAlignment="Center"  />
+
+                <TextBlock  Text="FELHASZNÁLT ADATOK" FontSize="16" FontWeight="Bold" Margin="0, 12" HorizontalAlignment="Center"/>
+                <TextBlock  Text="A program filmlistájának és időpontjainak forrása a MalomMozi hivatalos RSS csatornája." TextWrapping="Wrap"  Margin="32, 8" HorizontalAlignment="Center"/>
+                <HyperlinkButton Content="MalomMozi RSS csatorna" NavigateUri="http://www.malommozi.hu/rss.php" HorizontalAlignment="Center"/>
+                
+                <TextBlock  Text="A film részletes adatainak lekéréséhez a TheMovieDB API-ját használjuk fel." TextWrapping="Wrap"  Margin="32, 8" HorizontalAlignment="Center"/>
+                <HyperlinkButton Content="TheMovieDB" NavigateUri="https://www.themoviedb.org/?language=hu" HorizontalAlignment="Center"/>                
+                
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>
