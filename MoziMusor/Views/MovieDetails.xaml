@@ -13,16 +13,17 @@
     </Page.Resources>
 
     <ScrollViewer>
-    <Grid x:Name="movieDetailsGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12" >
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="movieDetailsGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
             <TextBlock x:Name="titleTextBox" Grid.Row="0"
                        FontSize="{ThemeResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" FontWeight="Bold"/>
@@ -52,10 +53,17 @@
                 <SymbolIcon Symbol="{Binding voteAverage, Converter={StaticResource ratingConverter}, ConverterParameter='10'}" />
             </StackPanel>
 
-        
-            <StackPanel x:Name="buttonsStackPanel" Grid.Row="5" HorizontalAlignment="Center" Margin="0,10,0,0">
-            <!-- Ide kerülnek majd a gombok-->
-        </StackPanel>
-    </Grid>
+            <TextBlock x:Name="infoLinkTextBlock" Text="Link: " Grid.Row="5" VerticalAlignment="Center"
+                        HorizontalAlignment="Left" FontWeight="SemiBold" Margin="4"/>
+            <Button x:Name="linkButton" Content="Ugrás a film adatlapjára" Grid.Row="5" 
+                             VerticalAlignment="Center" HorizontalAlignment="Right" Margin="4" Click="linkButton_Click"/>
+            <!-- <HyperlinkButton x:Name="linkHyperlinkButton" Content="Ugrás a film adatlapjára" Grid.Row="5" 
+                             VerticalAlignment="Center" HorizontalAlignment="Right"
+                             NavigateUri="" Margin="4"/> -->
+
+            <StackPanel x:Name="buttonsStackPanel" Grid.Row="6" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <!-- Ide kerülnek majd a gombok-->
+            </StackPanel>
+        </Grid>
     </ScrollViewer>
 </Page>
