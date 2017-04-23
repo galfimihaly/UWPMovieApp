@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo.png" />
+    <Content Include="Assets\map_marker-88.png" />
     <Content Include="Assets\NewStoreLogo.scale-100.png" />
     <Content Include="Assets\NewStoreLogo.scale-125.png" />
     <Content Include="Assets\NewStoreLogo.scale-150.png" />
