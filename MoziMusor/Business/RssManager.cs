@@ -78,7 +78,7 @@ namespace MoziMusor.Business
                     {
                         day = data[i];
                         i++;
-                        while (data[i].Contains(':') && i < data.Length-1)
+                        while (i < data.Length && data[i].Contains(':'))
                         {
                             //(day + ' ' + datas[i]).Remove(16);
                             dateTime = DateTime.ParseExact((day + ' ' + data[i]).Remove(16), "yyyy-MM-dd HH:mm",
@@ -90,7 +90,6 @@ namespace MoziMusor.Business
                             i++;
                         }
                         i--;
-
                     }
                 }
 
